@@ -74,6 +74,35 @@
 					</execution>
 				</executions>
 			</plugin>
+
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<servers>
+						<server>
+							<id>docker.io</id>
+							<username>owiin</username>
+							<password>fON0lAeOrme</password>
+						</server>
+					</servers>
+					<repository>owiin/owiin-dev</repository>
+					<directory>${project.basedir}</directory>
+					<contextDirectory>${project.build.directory}/products/${idempiere.product.id}/${tycho.env.osgi.os}/${tycho.env.osgi.ws}/${tycho.env.osgi.arch}</contextDirectory>
+					<tag>${unqualifiedVersion}</tag>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 </project>

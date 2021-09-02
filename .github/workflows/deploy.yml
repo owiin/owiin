@@ -7,7 +7,11 @@ on:
   workflow_dispatch:
 
 env:
+    # Java
     JAVA_VERSION: 11
+
+    # DockerHub
+    DOCKER_HUB_USERNAME: owiin
 
 jobs:
   build:
@@ -43,3 +47,23 @@ jobs:
        # Maven Clean Package
       - name: Maven Clean Package
         run: mvn clean package
+
+      # Docker Login
+      - name: Docker Login
+        uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
+        with:
+          username: ${{ env.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      # Docker push
+      - name: Docker push
+        run: docker push owiin/owiin-dev:latest
+      
+      # Slack notification
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          text: ':white_check_mark: pushed owiin/owiin-dev:latest to docker hub... https://hub.docker.com/repository/docker/owiin/owiin-dev'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
