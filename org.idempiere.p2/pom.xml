@@ -99,7 +99,7 @@
 					<repository>owiin/owiin-dev</repository>
 					<directory>${project.basedir}</directory>
 					<contextDirectory>${project.build.directory}/products/${idempiere.product.id}/${tycho.env.osgi.os}/${tycho.env.osgi.ws}/${tycho.env.osgi.arch}</contextDirectory>
-					<tag>${unqualifiedVersion}</tag>
+					<tag>latest</tag>
 				</configuration>
 			</plugin>
 			
