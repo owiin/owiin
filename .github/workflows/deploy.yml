@@ -46,7 +46,7 @@ jobs:
 
        # Maven Clean Package
       - name: Maven Clean Package
-        run: mvn clean package
+        run: mvn -Dowiin.username=${{ env.DOCKER_HUB_USERNAME }} -Dowiin.password=${{ secrets.DOCKER_HUB_PASSWORD }} clean package
 
       # Docker Login
       - name: Docker Login

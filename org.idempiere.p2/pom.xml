@@ -92,8 +92,8 @@
 					<servers>
 						<server>
 							<id>docker.io</id>
-							<username>owiin</username>
-							<password>fON0lAeOrme</password>
+							<username>${owiin.username}</username>
+							<password>${owiin.password}</password>
 						</server>
 					</servers>
 					<repository>owiin/owiin-dev</repository>
