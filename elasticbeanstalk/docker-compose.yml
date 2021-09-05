@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  backend:
+    image: "owiin/owiin-dev:latest"
+    ports:
+      - "8080:8080"
+    restart: "always"
