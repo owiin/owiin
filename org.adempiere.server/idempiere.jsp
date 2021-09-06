@@ -1,10 +1,9 @@
 <%@ page import="org.bmlaurus.home.Prop" %>
 <!--
-Theme Name: iDempiere Theme
-Version: 2.0
-Description: iDempiere Theme
-Author: BMLaurus
-Author URI: http://www.bmlaurus.com
+Theme Name: Owiin Theme
+Version: 1.0
+Author: Riad MENNOUR
+Author URI: http://www.owiin.com
 -->
 <html>
 <% Prop.load(); %>
@@ -92,7 +91,7 @@ Author URI: http://www.bmlaurus.com
 					</ul>
 				</div>
 				<div id="main-background">
-					<img name="img_background" src="<%=Prop.getImage("img_back.jpg")%>" border="0"/>
+					<img name="img_background" src="<%=Prop.getImage("img_back.png")%>" border="0"/>
 				</div>
 			</div>
 		</div>
@@ -129,7 +128,7 @@ Author URI: http://www.bmlaurus.com
 				<%}%>
 			</div>
 			<div id="footercopyright">
-				&copy; Copyright 2013-<%=Prop.getYear()%> iDempiere - All rights reserved - <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="blank">iDempiere License is GPLv2</a>
+				&copy; Copyright 2013-<%=Prop.getYear()%> Owiin - All rights reserved - <a href="http://www.gnu.org/licenses/agpl.html" target="blank">Owiin License is GPLv3</a>
 				<%=Prop.getProperty(Prop.COPYRIGHT_TXT)%>
 			</div>
 		</div>
