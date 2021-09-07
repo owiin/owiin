@@ -13,6 +13,12 @@ env:
     # DockerHub
     DOCKER_HUB_USERNAME: owiin
 
+    # AWS & Elastic Bean Stalk
+    AWS_REGION: us-east-1
+    EB_ENVIRONMENT_NAME: Owiineamdev-env
+    EB_APPLICATION_NAME: owiin-eam-dev
+    EB_DEPLOYMENT_PACKAGE: elasticbeanstalk/docker-compose.yml
+
 jobs:
   build:
 
@@ -68,3 +74,41 @@ jobs:
           text: ':white_check_mark: pushed owiin/owiin-dev:latest to docker hub... https://hub.docker.com/repository/docker/owiin/owiin-dev'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      
+      # Slack notification
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          text: ':elasticbeanstalk: :aws: Deployment started... :grimacing: :crossed_fingers:'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      # Build Number
+      - name: Build Number
+        id: build-number
+        run: echo "::set-output name=BUILD_NUMBER::$(date '+%-d.%-m.%Y.%-H.%-M.%-S')"
+
+      # Beanstalk Deploy
+      - name: Beanstalk Deploy
+        uses: einaregilsson/beanstalk-deploy@ebe3476a4ce991d54336935e75e78dd9d86f9408
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ env.AWS_REGION }}
+          environment_name: ${{ env.EB_ENVIRONMENT_NAME }}
+          application_name: ${{ env.EB_APPLICATION_NAME }}
+          deployment_package: ${{ env.EB_DEPLOYMENT_PACKAGE }}
+          version_label: ${{ steps.build-number.outputs.BUILD_NUMBER }}
+          version_description: Version ${{steps.build-number.outputs.BUILD_NUMBER}} deployed via github actions ${{ github.sha }}
+          wait_for_deployment: 60
+
+      # Slack notification
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          text: ':tada: :arrow_right: http://Owiineamdev-env.eba-mshc3m28.us-east-1.elasticbeanstalk.com'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
