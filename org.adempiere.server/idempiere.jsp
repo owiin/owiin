@@ -1,9 +1,10 @@
 <%@ page import="org.bmlaurus.home.Prop" %>
 <!--
-Theme Name: Owiin Theme
-Version: 1.0
-Author: Riad MENNOUR
-Author URI: http://www.owiin.com
+Theme Name: iDempiere Theme
+Version: 2.0
+Description: White Template
+Author: BMLaurus
+Author URI: http://www.bmlaurus.com
 -->
 <html>
 <% Prop.load(); %>
@@ -42,16 +43,11 @@ Author URI: http://www.owiin.com
 					<ul>
 						<li id="main-requestBtns-btnLogin">
 							<a href="<%=Prop.getProperty(Prop.WEBUI_LINK)%>" target="_self">
-								<img name="img_webui" src="<%=Prop.getImage("img_webui.png")%>" border="0" />
+								<img name="img_webui" src="<%=Prop.getImage("dark16.svg")%>" border="0" />
 							</a>
 							<div class="main-txt-btn"><%=Prop.getProperty(Prop.WEBUI_TEXT)%></div>
 						</li>
-						<li id ="main-requestBtns-btnLocSupp">
-							<a href="<%=Prop.getProperty(Prop.SUPPORT_LINK)%>" target="_blank">
-								<img name="img_locsupport" src="<%=Prop.getImage("img_locsupport.png")%>" border="0" />
-							</a>
-							<div class="main-txt-btn"><%=Prop.getProperty(Prop.LOCAL_TEXT)%></div>
-						</li>
+						
 						<li id ="main-requestBtns-btnResoc">
 							<a href="<%=Prop.getProperty(Prop.RESOURCE_LINK)%>" target="_blank">
 								<img name="img_resource" src="<%=Prop.getImage("img_resource.png")%>" border="0" />

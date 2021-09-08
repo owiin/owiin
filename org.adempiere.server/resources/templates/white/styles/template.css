@@ -86,8 +86,8 @@ div.body{
 #main-docuBtns ul li {
   display: inline-flex;
   flex-direction: column;
-  height:114px;
-  width:106px;
+  height:150px;
+  width:130px;
   padding: 9px 0;
   text-align:center;
   background-color: #fff;
@@ -117,6 +117,7 @@ div.body{
        -o-transition: all 0.5s ease;
       -ms-transition: all 0.5s ease;
           transition: all 0.5s ease;
+         
 }
 #main-requestBtns-btnLogin:hover{
  	filter:alpha(opacity=100);
