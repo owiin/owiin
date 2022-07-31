@@ -12,20 +12,6 @@
 
  ![version](https://img.shields.io/badge/version-0.8.0-blue.svg) ![license](https://img.shields.io/badge/license-AGPL-green.svg) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
 
-
- # Table of Contents
-
-- [Free & Open Source EAM](#free--open-source-eam)
-- [Table of Contents](#table-of-contents)
-- [Project Notes](#project-notes)
-- [Credentials](#credentials)
-  - [Useful Links](#useful-links)
-- [Licensing](#licensing)
-- [Supporters](#supporters)
-  - [Stargazers](#stargazers)
-  - [Forkers](#forkers)
-
-
 # Project Notes
 
 Owiin is a EAM program project (Enterprise Asset Management) derived from specific and extensive experience in the field, following the rules and best practice.
